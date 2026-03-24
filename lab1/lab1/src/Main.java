@@ -30,7 +30,7 @@ public class Main {
             return;
         }
 
-        // 1. К-сть знаків пунктуації
+        // к-сть знаків пунктуації
         int punctuationCount = 0;
         String punctuationMarks = ".,!?:;-\"'()[]{}";
         for (char c : text.toCharArray()) {
@@ -39,11 +39,11 @@ public class Main {
             }
         }
 
-        // 2. К-сть речень
+        // к-сть речень
         String[] sentences = text.split("[.!?]+");
         int sentenceCount = sentences.length;
 
-        // 3. К-сть слів
+        // к-сть слів
         String lowerText = text.toLowerCase();
         List<String> words = new ArrayList<>();
         Pattern wordPattern = Pattern.compile("[a-zа-яієїґ0-9]+(['-][a-zа-яієїґ0-9]+)*");
@@ -54,7 +54,7 @@ public class Main {
         }
         int totalWords = words.size();
 
-        // 4. Частота слів
+        // частота слів
         Map<String, Integer> wordFrequency = new HashMap<>();
         int totalWordLength = 0;
 
@@ -65,7 +65,7 @@ public class Main {
 
         int uniqueWordsCount = wordFrequency.size();
 
-        // 5. Середні значення
+        // середні значення
         double avgWordLength;
         if (totalWords == 0) avgWordLength = 0;
         else avgWordLength = (double) totalWordLength / totalWords;
@@ -74,11 +74,10 @@ public class Main {
         if (sentenceCount == 0) avgSentenceLength = 0;
         else avgSentenceLength = (double) totalWords / sentenceCount;
 
-        // 6. Сортування для пошуку топ-10 слів
+        // топ-10 слів
         List<Map.Entry<String, Integer>> sortedWords = new ArrayList<>(wordFrequency.entrySet());
         sortedWords.sort((a, b) -> b.getValue().compareTo(a.getValue()));
 
-        // Вивід результатів
         System.out.println("\n--- Результати аналізу ---");
         System.out.println("Кількість усіх слів у тексті: " + totalWords);
         System.out.println("Кількість оригінальних слів: " + uniqueWordsCount);
