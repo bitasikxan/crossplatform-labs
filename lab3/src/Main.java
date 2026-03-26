@@ -6,8 +6,8 @@ import java.util.Random;
 
 public class Main {
     // константи для розмірів, можна погратись
-    private static final int ROWS = 90;
-    private static final int COLS = 182;
+    private static final int ROWS = 50;
+    private static final int COLS = 50;
     private static final int CELL_SIZE = 10;
     private static final double POPULATION_RATE = 0.2;
     private static final int TIMER_DELAY = 100; // milliseconds
