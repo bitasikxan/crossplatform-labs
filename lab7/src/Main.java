@@ -19,7 +19,7 @@ public class Main extends JFrame implements ActionListener {
     private final int[][] board = new int[BOARD_SIZE][BOARD_SIZE];
 
     public Main() {
-        setTitle("Five in a Row (Gomoku)");
+        setTitle("Five in a Row");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(700, 750);
         setLocationRelativeTo(null);
