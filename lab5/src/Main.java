@@ -17,7 +17,7 @@ public class Main extends JFrame {
     private final Font boldFont = new Font("Segoe UI", Font.BOLD, 18);
 
     public Main() {
-        setTitle("Гра Баше: Остання монета");
+        setTitle("Гра в монети");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(450, 350);
         setLocationRelativeTo(null);
@@ -49,7 +49,7 @@ public class Main extends JFrame {
         mainPanel.add(statusLabel, BorderLayout.NORTH);
 
         JPanel centerPanel = new JPanel(new GridLayout(2, 1));
-        JLabel titleLabel = new JLabel("Монет у купці:", SwingConstants.CENTER);
+        JLabel titleLabel = new JLabel("Монет у купі:", SwingConstants.CENTER);
         titleLabel.setFont(mainFont);
         titleLabel.setForeground(Color.GRAY);
 
@@ -64,8 +64,8 @@ public class Main extends JFrame {
         JPanel bottomPanel = new JPanel(new GridLayout(1, 3, 10, 0));
 
         take1Btn = createButton("Взяти 1", new Color(0, 123, 255));
-        take2Btn = createButton("Взяти 2", new Color(23, 162, 184));
-        restartBtn = createButton("Ще раз", new Color(40, 167, 69));
+        take2Btn = createButton("Взяти 2", new Color(23, 167, 184));
+        restartBtn = createButton("Ще раз", new Color(40, 167, 67));
         restartBtn.setVisible(false);
 
         take1Btn.addActionListener(_ -> processPlayerMove(1));
@@ -96,7 +96,7 @@ public class Main extends JFrame {
         } else {
             statusLabel.setText("Комп'ютер ходить першим...");
             statusLabel.setForeground(new Color(220, 53, 69));
-            toggleButtons(false); // Блокуємо кнопки, поки ШІ думає
+            toggleButtons(false);
             triggerAIMove();
         }
     }
@@ -123,9 +123,10 @@ public class Main extends JFrame {
             if (coins % 3 == 1) take = 1;
             else if (coins % 3 == 2) take = 2;
             else take = random.nextBoolean() ? 1 : 2;
+            // 123-125 also could be written like:
+            // if (coins % 3 == 0) take = random.nextBoolean() : 1 ? 2;
+            // else take = coins % 3;
 
-
-            // Захист, щоб ШІ не взяв 2 монети, якщо залишилась лише 1
             if (take > coins) take = coins;
 
             coins -= take;
@@ -134,7 +135,7 @@ public class Main extends JFrame {
             if (checkWin("Комп'ютер переміг!")) return;
 
             isPlayerTurn = true;
-            statusLabel.setText(String.format("ШІ взяв %d. Ваш хід!", take));
+            statusLabel.setText(String.format("Комп'ютер взяв %d. Ваш хід!", take));
             statusLabel.setForeground(new Color(0, 123, 255));
             toggleButtons(true);
         });
